@@ -1,13 +1,13 @@
 import React, { Ref } from 'react'
-import todo from '../store/todo'
+import todo, { ITodo } from '../store/todo'
 import Todo from './Todo'
 import s from './Todos.module.scss'
-import { VscAdd } from "react-icons/vsc";
+import { VscAdd, VscClose, VscCheckAll } from "react-icons/vsc";
 import { observer } from 'mobx-react-lite';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default observer((): JSX.Element => {
-    const todos = todo.todos.map((item, index) => <Todo key={index} todo={item} />)
+    let todos = todo.sorted.map((item, index) => <Todo key={index} todo={item} />)
     const textRef: Ref<HTMLInputElement> = React.createRef()
 
     const createTodo = () => {
@@ -20,12 +20,18 @@ export default observer((): JSX.Element => {
     }
 
     return <div className={s.list}>
-        <div className={s.create}>
-            <input ref={textRef} className={s.input} type="text" />
-            <button onClick={createTodo} className={s.button}>
-                <VscAdd />
-            </button>
+        <div>
+            <div className={s.create}>
+                <input ref={textRef} className={s.input} type="text" />
+                <button onClick={createTodo} className={s.button}>
+                    <VscAdd />
+                </button>
+            </div>
+            { todos }
         </div>
-        { todos }
+        <div className={s.sort}>
+            <VscCheckAll onClick={() => todo.sort('complited')} />
+            <VscClose onClick={() => todo.sort('not-complited')} />
+        </div>
     </div>
 })
