@@ -1,0 +1,25 @@
+.list {
+    width: 400px;
+    height: 80vh;
+    background: #898989;
+}
+
+.input {
+    width: 80%;
+}
+
+.button {
+    width: 20%;
+    display: flex;
+    cursor: pointer;
+    background: #659acc;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
+.create {
+    display: flex;
+}

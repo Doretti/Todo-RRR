@@ -1,0 +1,12 @@
+.todo {
+    background-color: #eee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 95%;
+    }
+}
